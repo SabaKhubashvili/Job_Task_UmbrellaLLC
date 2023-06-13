@@ -12,6 +12,19 @@ export const SingleProductPage = () => {
         id
     } = useParams()
     
+    const {
+        data,
+        isLoading
+    } = getSingleProduct(id)
+    
+    const [activeImage, setActiveImage] = useState<string | undefined>();
+    useEffect(() => {
+        if (data?.images && data.images.length > 0) {
+          setActiveImage(data.images[0]);
+        }
+      }, [data]);
+
+
     if(!id){
         return <EmptyClient
             title='404'
@@ -19,18 +32,6 @@ export const SingleProductPage = () => {
         />
     }
     
-    const {
-        data,
-        isLoading
-    } = getSingleProduct(id)
-    const [activeImage, setActiveImage] = useState<string | undefined>();
-
-
-    useEffect(() => {
-        if (data?.images && data.images.length > 0) {
-          setActiveImage(data.images[0]);
-        }
-      }, [data]);
     
     if(isLoading){
         return <Loading/>
@@ -45,24 +46,25 @@ export const SingleProductPage = () => {
   return (
     <React.Fragment>
             <Helmet>
-                <title>Product</title>
-                <meta property="og:title" content="Job Task from UmbrelaLLC" />
-                <meta property="og:description" content="Here is project made by me" />
+                <title>{data.title} | Product</title>
+                <meta property="og:title" content={data.title} />
+                <meta property="og:description" content={data.description} />
+                <meta property="og:image" content={data.images[0]} />
             </Helmet>
             <Container>
                 <div className=' pt-[50px] '>
                     <Link to='/' className='flex items-center gap-[20px] font-bold'><span className='!w-8 block'><Arrow_Left/></span> Back</Link>
-                    <div className='flex justify-between pt-[70px] gap-[20px]'>
+                    <div className='flex justify-between pt-[70px] gap-[20px] lg:flex-row flex-col'>
 
-                        <div className='basis-1/3  max-h-[30rem]'>
+                        <div className='basis-1/3 '>
                         <div className='w-full rounded-lg h-full'>
                             {data.images ?
                             <div className='flex flex-col gap-[10px]'>
-                                <img src={activeImage} alt="MainImage" className='h-full max-h-[30rem] object-cover w-full' />
-                                <div className='flex flex-wrap w-full justify-between gap-[5px]'>
+                                <img src={activeImage} alt="MainImage" className=' h-[30rem] object-cover w-full' />
+                                <div className='flex flex-wrap w-full justify-around gap-[5px]'>
                                     { data.images.length > 1 &&
                                         data.images.map((image:string)=>(                                         
-                                            <img src={image} alt="Image" key={image} onClick={()=>setActiveImage(image)} className='w-1/4 max-h-[8rem] object-cover cursor-pointer' />
+                                            <img src={image} alt="Image" key={image} onClick={()=>setActiveImage(image)} className='sm:w-1/4 w-3/4 max-h-[8rem] object-cover cursor-pointer' />
                                         ))
                                     }
                                 </div>

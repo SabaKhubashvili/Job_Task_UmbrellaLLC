@@ -40,7 +40,7 @@ export const Products = ({isAdmin}:Props) => {
 
     if(products){
  
-      let filtered =  products.filter((product:ProductType) => {
+      const filtered =  products.filter((product:ProductType) => {
         
         const filters = [];
         

@@ -120,7 +120,7 @@ export const CreateProductModal = () => {
                   reset()
                   productModal.onClose()
                   setActiveStep(STEPS.INFO)
-                }).catch(error=>{
+                }).catch(()=>{
                     toast.error('Something went wrong')
                 }).finally(()=>{
                   setIsLoading(false)                  

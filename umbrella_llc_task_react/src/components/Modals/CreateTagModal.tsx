@@ -42,7 +42,7 @@ export const CreatetagModal = () => {
   };
 
   // Modal Body
-  let modalBody = (
+  const modalBody = (
     <div className="flex flex-col gap-[20px]">
       <TextInput
         id="name"

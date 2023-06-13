@@ -8,7 +8,7 @@ export const AdminTools = () => {
 
         
   return (
-    <section className='flex gap-[10px] pt-[20px] pb-[30px]'>
+    <section className='flex gap-[10px] pt-[20px] pb-[30px] sm:flex-nowrap flex-wrap'>
         <MainButton onClick={()=>{productModal.onOpen()}} label='Create Product'/>
         <MainButton onClick={()=>{tagModal.onOpen()}} label='Create Tag'/>
     </section>
