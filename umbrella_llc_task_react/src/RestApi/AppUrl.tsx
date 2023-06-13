@@ -2,7 +2,7 @@
 
 export default class BaseUrl{
 
-    static BaseUrl = 'http://127.0.0.1:8000/api/';
+    static BaseUrl = import.meta.env.VITE_BASE_API_URL; //* Development http://127.0.0.1:8000/api/
 
     static getProducts = this.BaseUrl+'getAllProducts';
     static getTags = this.BaseUrl+'getAllTags'

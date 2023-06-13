@@ -23,7 +23,7 @@ export const ProductComponent = ({
   return (
     <div className='w-full bg-[#e3ede2] p-3  rounded-lg h-full flex flex-col justify-between'>
       <Link to={`/product/${id}`} className='h-[10rem] object-cover w-full'>
-        {images ? (
+        {images[0] ? (
           <img src={images[0]} alt='MainImage' className='h-[10rem] object-cover w-full' />
         ) : (
           <img src='/ImageNotAvaiable.webp' alt='MainImage' className='h-[10rem] object-cover w-full' />

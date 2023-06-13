@@ -12,6 +12,8 @@ interface Props {
 
 
 export const Home = ({ isAdmin }: Props) => {
+
+  
   return (
     <React.Fragment>
       <Helmet>

@@ -72,8 +72,8 @@ export const CreateProductModal = () => {
     
 
   const [images, setImages] = useState<string[]>([])
-  const present_key = "foyk1zop"
-  const cloud_name = "djnatnzow"
+  const present_key = import.meta.env.VITE_CLOUDINARY_PRESET_KEY // Imported for safety from env but its foyk1zop
+  const cloud_name = import.meta.env.VITE_CLOUDINARY_CLOUD_NAME // djnatnzow
 
   // Image Upload
   const handleImage = (event: React.ChangeEvent<HTMLInputElement>) => {
