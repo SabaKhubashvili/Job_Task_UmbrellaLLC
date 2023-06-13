@@ -14,7 +14,7 @@ export const MainButton = ({
     disabled,
 }:Props) => {
   return (
-    <button className={`py-2 px-4    h-[3rem]  outline-none min-w-[6rem] rounded-lg !text-text
+    <button className={`py-2 px-4 h-fit  outline-none min-w-[6rem] rounded-lg !text-text
      disabled:cursor-not-allowed disabled:opacity-90 transition-all duration-300
     ${alternative ? ' bg-mainButton ' : 'bg-secondaryButton'}
     ${full ? 'w-full' : 'w-fit'}

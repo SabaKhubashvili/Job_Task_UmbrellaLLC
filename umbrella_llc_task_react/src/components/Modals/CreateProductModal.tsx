@@ -109,6 +109,9 @@ export const CreateProductModal = () => {
   }
   
   const onSubmit:SubmitHandler<FieldValues> = (data) => {
+    if(formTags.length === 0 ){
+      return toast.error('At least one tag is required')
+    }
     if (activeStep !== STEPS.IMAGE) {
       return onNext()
     }

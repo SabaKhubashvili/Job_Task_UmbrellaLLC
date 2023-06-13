@@ -71,7 +71,7 @@ export const Modal = ({
 
   return (
     <section className="fixed inset-0 w-full h-full z-[99] outline-none   overflow-x-hidden overflow-y-auto bg-neutral-800/90 flex justify-center items-centere">
-      <div className="relative w-full md:w-4/6 lg:w-3/6 xl:w-2/5 my-6 mx-auto h-full md:h-auto">
+      <div className="relative w-full md:w-4/6 lg:w-3/6 xl:w-2/5 mx-auto h-full md:h-auto">
         <div
           className={`translate duration-300 h-full  flex justify-center items-center
                         ${showModal ? "translate-y-0" : "translate-y-full"}
@@ -79,7 +79,7 @@ export const Modal = ({
                         `}
         >
           <div
-            className="translate h-full md:h-auto border-0 rounded-lg 
+            className="translate h-full md:h-auto border-0 md:rounded-lg 
             shadow-lg relative flex flex-col gap-[20px] w-full bg-white focus:outline-none p-4"
             ref={modalRef}
           >

@@ -18,6 +18,7 @@ export const SingleProductPage = () => {
     } = getSingleProduct(id)
     
     const [activeImage, setActiveImage] = useState<string | undefined>();
+    const [showFullDescription,setShowFullDescription] = useState<boolean>(false)
     useEffect(() => {
         if (data?.images && data.images.length > 0) {
           setActiveImage(data.images[0]);
@@ -80,7 +81,12 @@ export const SingleProductPage = () => {
                             <h1 className='font-bold text-[38px] text-[#111111bf]'>{data.title}</h1>
                             <p className='text-secondaryButton font-medium text-[20px]'>${data.price}</p>
                             <p className='pt-[20px]'>
-                                {data.description}
+                                {data.description.length > 1200 && !showFullDescription ? (
+                                    <React.Fragment>
+                                        {data.description.slice(0,1200)}
+                                        <span className='text-[#21732b] cursor-pointer' onClick={()=>setShowFullDescription(true)}> ...More</span>
+                                    </React.Fragment>
+                            ): data.description }
                             </p>
                         </div>
                     </div>
