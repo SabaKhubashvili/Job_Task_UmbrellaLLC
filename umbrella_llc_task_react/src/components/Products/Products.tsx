@@ -27,9 +27,13 @@ export const Products = ({isAdmin}:Props) => {
 
   const [searchParams] = useSearchParams()
   const searchTitle = searchParams.get('title');
-  const searchPrice = Number(searchParams.get('price'))
+
+  const searchPrice = searchParams.get('price')
+  const searchArray = searchPrice && searchPrice.split(',').map(Number)
+
+  
   const tagsParam = searchParams.get('tags')
-  const tagsArray = tagsParam && tagsParam?.split(',').map(Number)
+  const tagsArray = tagsParam && tagsParam.split(',').map(Number) 
 
 
   useEffect(()=>{
@@ -44,12 +48,12 @@ export const Products = ({isAdmin}:Props) => {
         
         const filters = [];
         
-          if (searchTitle) {
+        if (searchTitle) {
             filters.push((product:ProductType) => product.title.includes(searchTitle));
           }
           
-          if (searchPrice) {
-            filters.push((product:ProductType) => product.price >= searchPrice);
+          if (searchArray) {
+            filters.push((product:ProductType) => product.price >= searchArray[0] && product.price <= searchArray[1]);
           }
           
           if (tagsArray && tagsArray.length > 0) {
@@ -65,7 +69,9 @@ export const Products = ({isAdmin}:Props) => {
 },[searchTitle,searchPrice,tagsParam])
   
     if(isLoading){
-      return <Loading/>
+      return  <div className='py-[10rem]'>
+        <Loading/>
+      </div>
     }
 
     if(isError){
@@ -92,7 +98,7 @@ export const Products = ({isAdmin}:Props) => {
       filteredProducts ?
       filteredProducts.map((product:ProductType) => (
         <div  key={product.id} 
-              className="xl:basis-1/6 lg:basis-1/5 md:basis-1/4 w-full "
+              className="xl:basis-1/5 lg:basis-1/3 md:basis-1/3 w-full "
        >
           <ProductComponent {...product} isAdmin={isAdmin} handleDelete={(id:number)=>handleDelete(id)} />
         </div>

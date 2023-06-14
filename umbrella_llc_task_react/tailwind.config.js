@@ -11,8 +11,17 @@ export default {
         'charocal':'#3D5467',
         'smokewhite':'#F1EDEE',
         'mainButton':'#214e1d',
-        'secondaryButton':'#214e1d',
-        'text':'#f1f9f0'
+        'secondaryButton':'#2f7f30',
+        'text':'#f1f9f0',
+        'darker':'#1e461b'
+      },
+      boxShadow:{
+        'card':'0 2px 7px #dfdfdf'
+      },
+      fontFamily:{
+        'abezze':[ 'ABeeZee', 'sans-serif'],
+        'didot':[ 'Bona Nova', 'serif'],
+        'poppins':['Poppins','sans-serif']
       }
     },
   },

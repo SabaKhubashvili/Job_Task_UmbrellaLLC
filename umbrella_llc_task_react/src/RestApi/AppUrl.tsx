@@ -7,6 +7,8 @@ export default class BaseUrl{
     static getProducts = this.BaseUrl+'getAllProducts';
     static getTags = this.BaseUrl+'getAllTags'
     static getSingleProduct = this.BaseUrl+'getSingleProduct'
+    static getPrices = this.BaseUrl+'getPrices'
+    static getFavorites = this.BaseUrl+'getFavorites'
 
     static createProduct = this.BaseUrl+'createProduct'
     static createTag = this.BaseUrl+'createTag'

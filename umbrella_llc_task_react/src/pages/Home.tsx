@@ -25,16 +25,22 @@ export const Home = ({ isAdmin }: Props) => {
       <Container>
         <main className="w-full h-full pt-[40px]">
           <Filter/>
+          <div className="mt-[20px]">
+
+          <LinkButton
+            to="/favorites"
+            label="Favorites"
+            />
+            </div>
           {isAdmin &&
             <AdminTools/> 
           }
           <Products isAdmin={isAdmin} />
         </main>
       </Container>
-      <div className="fixed right-5 bottom-5">
+      <div className="fixed right-5 bottom-[4rem] z-[99]">
         <LinkButton 
-        to={isAdmin ? '/' : '/admin'}
-        alternative 
+        to={isAdmin ? '/' : '/admin'} 
         label={isAdmin ? 'Become member' : 'Become admin' }/>
       </div>
     </React.Fragment>

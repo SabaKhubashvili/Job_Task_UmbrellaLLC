@@ -1,7 +1,21 @@
+@import url('https://fonts.googleapis.com/css2?family=ABeeZee&family=Bona+Nova&family=Poppins:wght@200;400&display=swap');
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
 
 body{
     background-color: #f1f9f0;
+}
+body , html, #root{
+    height: 100% !important;
+}
+.ant-slider-rail{
+    background-color: #bdd1bd !important;
+}
+.ant-slider-track {
+    background-color: rgb(39, 144, 39) !important;
+}
+.ant-slider-handle::after {
+    background: #66ce59 !important;
+    box-shadow:#23541d !important;
 }

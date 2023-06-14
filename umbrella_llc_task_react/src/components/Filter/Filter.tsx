@@ -4,6 +4,8 @@ import { DropdownInput } from '../Inputs/DropdownInput'
 import { MainButton } from '../buttons/MainButton'
 import getAllTags from '../../actions/getAllTags'
 import {useSearchParams } from 'react-router-dom';
+import { Slider } from 'antd'
+import getPrices from '../../actions/getPrices'
 
 
 export const Filter = () => {
@@ -22,7 +24,7 @@ export const Filter = () => {
     } = useForm<FieldValues>({
         defaultValues:{
             title:'',
-            price:0,
+            price:[],
             tags:[]
         }
     })
@@ -30,6 +32,10 @@ export const Filter = () => {
     const{
       data:tags,
     }  = getAllTags()
+    const{
+      data:prices,
+
+    } = getPrices()
   
     
     const formTags = watch('tags') as number[]
@@ -57,29 +63,33 @@ export const Filter = () => {
       const onSubmit: SubmitHandler<FieldValues> = (data) => {
 
         const query: any = {
-          ...data,
+          title: data.title,
+          price: data.price.join(','),
           tags: data.tags.join(',')
         };
     
 
+        
+
         setSearchParams(query)
       };
     
+    
   return (
-    <section className='w-full flex gap-[20px] sm:flex-nowrap flex-wrap'>
+    <section className='w-full flex gap-[20px] md:flex-nowrap flex-wrap items-end'>
         <TextInput
             id='title'
             label='Title'
             placeholder='enter title'
             register={register} errors={errors}
             />
-        <TextInput
+        {/* <TextInput
             id='price'
             label='Price'
             placeholder='enter price'
             type='number'
             register={register} errors={errors}
-            />
+            /> */}
         <DropdownInput
             label='Select tags'
             placeholder='Tags'
@@ -87,6 +97,14 @@ export const Filter = () => {
             checkedData={formTags}
             onChange={(value:number)=>{addToTags(value)}}
         />
+            <div className='w-full flex flex-col gap-[10px] '>
+              <h1 className='font-bold text-black'>Price range</h1>
+              {
+                prices &&
+              <Slider range  onChange={(value:[number,number])=>{setCustomValue('price',value)}} max={prices[0]} min={prices[1]} disabled={false} 
+               className='w-full'/>
+              }
+            </div>
         <div className='flex justify-center items-end'>
 
             <MainButton

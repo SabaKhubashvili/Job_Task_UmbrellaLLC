@@ -49,7 +49,7 @@ export const DropdownInput = ({
         </div>
       </div>
       {isOpen && (
-        <div className="w-full mx-auto absolute top-[5.5rem] bg-white p-2 rounded-lg flex flex-col gap-[7px]" ref={dropdownRef}>
+        <div className="w-full mx-auto absolute z-[100] top-[5.5rem] bg-white p-2 rounded-lg flex flex-col gap-[7px]" ref={dropdownRef}>
           {data.map((tag) => (
             <div className="flex justify-between cursor-pointer" key={tag.id} onClick={()=>onChange(tag.id)}>
               <h5>{tag.name}</h5>
